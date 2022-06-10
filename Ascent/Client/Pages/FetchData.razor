@@ -1,5 +1,7 @@
-﻿@page "/fetchdata"
+@page "/fetchdata"
 @using Ascent.Shared
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 @inject HttpClient Http
 
 <PageTitle>Weather forecast</PageTitle>
@@ -38,7 +40,7 @@ else
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private WeatherForecast[] forecasts;
 
     protected override async Task OnInitializedAsync()
     {
