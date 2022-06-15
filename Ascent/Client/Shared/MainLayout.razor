@@ -1,18 +1,48 @@
 @inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4 auth">
-            <LoginDisplay />
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+<Layout Style="min-height: 100vh;">
+    <Sider Breakpoint="@BreakpointType.Lg" CollapsedWidth="64">
+        <div class="logo">Ascent</div>
+        <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Inline" DefaultSelectedKeys=@(new[]{"1"})>
+            <MenuItem Key="1" RouterLink="">
+                <Icon Type="home" Theme="outline" />
+                <span class="nav-text">Home</span>
+            </MenuItem>
+            <MenuItem Key="2" RouterLink="counter">
+                <Icon Type="number" Theme="outline" />
+                <span class="nav-text">Counter</span>
+            </MenuItem>
+            <MenuItem Key="3" RouterLink="fetchdata">
+                <Icon Type="cloud" Theme="outline" />
+                <span class="nav-text">Fetch Data</span>
+            </MenuItem>
+        </Menu>
+    </Sider>
+    <Layout Class="site-layout">
+        <Header Class="site-layout-background" Style="padding: 0;"></Header>
+        <Content Style=" margin: 0 16px;">
             @Body
-        </article>
-    </main>
-</div>
+        </Content>
+        <Footer Style="text-align: center;">Ant Design ©2018 Created by Ant UED</Footer>
+    </Layout>
+</Layout>
+
+<style>
+    #components-layout-demo-side .logo {
+        height: 32px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px;
+    }
+
+    .site-layout .site-layout-background {
+        background: #fff;
+    }
+
+    .logo {
+        width: 120px;
+        height: 31px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px 24px;
+        float: left;
+    }
+</style>

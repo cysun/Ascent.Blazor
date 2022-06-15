@@ -7,6 +7,7 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+var configuration = builder.Configuration;
 var services = builder.Services;
 
 services.AddHttpClient("Ascent.Server.API", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
@@ -26,5 +27,7 @@ services.AddOidcAuthentication(options =>
     // when using the "fragment" response mode.
     options.ProviderOptions.ResponseMode = "query";
 });
+
+services.AddAntDesign();
 
 await builder.Build().RunAsync();
